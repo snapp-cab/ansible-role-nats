@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description="NATS Server"
+After=network.target
+
+[Service]
+Type=simple
+RestartSec=5s
+Restart=on-failure
+ExecStop=/bin/kill -s SIGINT $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStart=/usr/local/bin/nats-server -c /etc/nats-server.conf
+
+[Install]
+WantedBy=multi-user.target

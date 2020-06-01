@@ -1,0 +1,4 @@
+- include_tasks: nats-server.yaml
+
+- include_tasks: exporter.yaml
+  when: nats_exporter_enabled == 'true'

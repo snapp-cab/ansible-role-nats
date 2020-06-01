@@ -1,0 +1,50 @@
+- name: Check if NATS Package is installed
+  shell: "dpkg-query -W -f='${Version}' nats-server | grep {{ nats_version }}"
+  register: is_installed
+  check_mode: no
+  failed_when: no
+  changed_when: no
+
+- name: Install NATS package from the GitHub.
+  apt:
+    state: present
+    deb: "https://github.com/nats-io/nats-server/releases/download/v{{ nats_version }}/nats-server-v{{ nats_version }}-amd64.deb"
+  when: is_installed.rc == 1
+
+- name: Ensure NATS service file is available.
+  template:
+    src: nats-server.service.j2
+    dest: /etc/systemd/system/nats-server.service
+    mode: 0644
+    backup: yes
+  register: nats_server_service_template
+
+- name: Reload systemd after adding NATS service.
+  systemd:
+    state: stopped
+    daemon_reload: true
+    name: "nats-server"
+  when: nats_server_service_template.changed
+
+- name: Ensure NATS service is started and enabled on boot.
+  service:
+    name: nats-server
+    state: started
+    enabled: true
+
+- name: Create or update NATS configuration file (/etc/nats-server.conf)
+  template:
+    src: nats-server.conf.j2
+    dest: /etc/nats-server.conf
+    owner: nats
+    group: nats
+    mode: 0644
+    backup: yes
+  register: nats_server_conf_template
+
+- name: Reload NATS service when its configuration changed
+  debug:
+    msg: "Reload NATS service when its configuration changed"
+  when: nats_server_conf_template.changed
+  notify:
+    - reload nats-server

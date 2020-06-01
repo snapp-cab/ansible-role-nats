@@ -1,0 +1,41 @@
+# {{ ansible_managed }}
+
+# Client port of 4222 on all interfaces
+port: 4222
+
+# HTTP monitoring port
+monitor_port: 8222
+
+server_name: {{ ansible_fqdn }}
+#write_deadline: 5s
+
+# This is for clustering multiple servers together.
+cluster {
+  # Cluster port for inbound route connections from other server on all interfaces
+  port: 6222
+
+  # Authorization for route connections
+  # Other server can connect if they supply the credentials listed here
+  # This server will connect to discovered routes using this user
+  authorization {
+    user: user
+    password: pwd
+    timeout: 0.75
+  }
+
+  # This server establishes routes with these server.
+  # This server solicits new routes and Routes are actively solicited and connected to from this server.
+  # Other servers can connect to us if they supply the correct credentials
+  # in their routes definitions from above.
+  routes = [
+{% for node in groups[nats_host_group] %}
+   {% if hostvars[node].ansible_default_ipv4.address == ansible_default_ipv4.address %}
+   {% else %}
+    nats-route://user:pwd@{{ hostvars[node].ansible_default_ipv4.address }}:6222
+   {% endif %}
+{% endfor %}
+  ]
+
+  # Configure number of connect retries for implicit routes
+  connect_retries: 30
+}

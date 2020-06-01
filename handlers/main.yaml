@@ -1,0 +1,10 @@
+---
+- name: restart nats-server
+  service:
+    name: nats-server
+    state: restarted
+
+- name: reload nats-server
+  service:
+    name: nats-server
+    state: reloaded
