@@ -3,6 +3,7 @@
 # Client port of 4222 on all interfaces
 port: 4222
 {% if nats_client_advertise != "" -%}
+
 # Alternative client listen specification <host>:<port> or just <host> to advertise to clients and other server.
 # Useful in cluster setups with NAT.
 client_advertise: "{{ nats_client_advertise }}"
