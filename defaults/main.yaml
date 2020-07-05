@@ -1,5 +1,7 @@
 nats_version: "2.1.6"
 nats_host_group: "core"
 
+nats_client_advertise: ""
+
 nats_exporter_enabled: "true"
 nats_prometheus_exporter_version: "0.6.2"
