@@ -35,10 +35,7 @@ cluster {
   # in their routes definitions from above.
   routes = [
 {% for node in groups[nats_host_group] %}
-   {% if hostvars[node].ansible_default_ipv4.address == ansible_default_ipv4.address -%}
-   {% else %}
-    nats-route://user:pwd@{{ nats_cluster_routes_address | default(hostvars[node].ansible_default_ipv4.address) }}:6222
-   {% endif %}
+    nats-route://user:pwd@{{ hostvars[node].nats_cluster_routes_address | default(hostvars[node].ansible_default_ipv4.address) }}:6222
 {% endfor %}
   ]
 
