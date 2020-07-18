@@ -36,8 +36,6 @@
   template:
     src: nats-server.conf.j2
     dest: /etc/nats-server.conf
-    owner: nats
-    group: nats
     mode: 0644
     backup: yes
   register: nats_server_conf_template
