@@ -50,13 +50,13 @@ gateway {
   gateways: [
   {% for group in nats_gateway_host_groups %}
   {
-    name: {{ group }},
+    name: {{ group }}
     urls: [
     {% for node in groups[group] %}
       nats://{{ hostvars[node].nats_cluster_routes_address | default(hostvars[node].ansible_default_ipv4.address) }}:7222
     {% endfor %}
     ]
-  },
+  }
   {% endfor %}
   ]
 }
