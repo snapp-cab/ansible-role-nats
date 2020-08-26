@@ -12,7 +12,7 @@ User=nats-exporter
 Group=nats-exporter
 ExecStop=/bin/kill -s SIGINT $MAINPID
 #ExecReload=/bin/kill -s HUP $MAINPID
-ExecStart=/usr/local/bin/prometheus-nats-exporter -channelz -connz -routez -serverz -subz -varz -replicatorVarz http://127.0.0.1:8222
+ExecStart=/usr/local/bin/prometheus-nats-exporter -channelz -connz -routez -serverz -subz -varz http://127.0.0.1:8222
 
 [Install]
 WantedBy=multi-user.target
