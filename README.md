@@ -6,7 +6,7 @@ NATS.io is a simple, secure and high performance open source messaging system fo
 
 ``` yaml
 # requirments.yaml
-- src: git@gitlab.snapp.ir:ansible-role/nats.git
+- src: git@gitlab.snapp.ir:nats/ansible-role-nats.git
   scm: git
   version: master
   name: nats
