@@ -42,7 +42,7 @@
 
 - name: Restart NATS service when its configuration changed
   debug:
-    msg: "Reload NATS service when its configuration changed"
+    msg: "Restart NATS service when its configuration changed"
   when: nats_server_conf_template.changed
   notify:
     - restart nats-server
