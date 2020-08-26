@@ -40,9 +40,9 @@
     backup: yes
   register: nats_server_conf_template
 
-- name: Reload NATS service when its configuration changed
+- name: Restart NATS service when its configuration changed
   debug:
     msg: "Reload NATS service when its configuration changed"
   when: nats_server_conf_template.changed
   notify:
-    - reload nats-server
+    - restart nats-server
