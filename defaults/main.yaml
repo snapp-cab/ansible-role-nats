@@ -1,6 +1,8 @@
 nats_version: "2.1.6"
 nats_host_group: "core"
 
+nats_gateway_host_groups: []
+
 nats_client_advertise: ""
 nats_cluster_routes_address: ""
 
