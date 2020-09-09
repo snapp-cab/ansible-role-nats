@@ -1,6 +1,8 @@
 # NATS Ansible Role
+![Travis (.org)](https://img.shields.io/travis/snapp-cab/ansible-role-nats?logo=travis&style=flat-square)
 
-NATS.io is a simple, secure and high performance open source messaging system for cloud native applications, IoT messaging, and microservices architectures.
+NATS.io is a simple, secure, and high-performance open source messaging system for cloud-native applications, IoT messaging, and microservices architectures.
+This ansible role installs it and then provide its configuration.
 
 ## Installation
 
