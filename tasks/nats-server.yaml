@@ -1,5 +1,5 @@
 - name: Check if NATS Package is installed
-  shell: "dpkg-query -W -f='${Version}' nats-server | grep {{ nats_version }}"
+  shell: "set -o pipefail && dpkg-query -W -f='${Version}' nats-server | grep {{ nats_version }}"
   register: is_installed
   check_mode: no
   failed_when: no
