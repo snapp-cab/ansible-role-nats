@@ -4,18 +4,12 @@ dist: bionic
 language: python
 python: "3.7"
 
-# Install Ansible
-addons:
-  apt:
-    packages:
-      - python-pip
-
 install:
   # Install Ansible
-  - pip install ansible
+  - pip3 install ansible
 
   # Install Ansible Lint
-  - pip install ansible-lint
+  - pip3 install ansible-lint
 
   # Check Ansible version
   - ansible --version
