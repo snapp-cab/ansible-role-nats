@@ -8,3 +8,15 @@
   service:
     name: nats-server
     state: reloaded
+
+- name: reload daemon nats-server
+  systemd:
+    state: stopped
+    daemon_reload: true
+    name: "nats-server"
+
+- name: reload daemon nats-exporter
+  systemd:
+    state: stopped
+    daemon_reload: true
+    name: "nats-exporter"
