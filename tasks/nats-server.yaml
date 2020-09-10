@@ -20,7 +20,7 @@
   register: nats_server_service_template
 
 - name: Reload systemd after adding NATS service.
-  nofity:
+  notify:
     - reload daemon nats-server
   when: nats_server_service_template.changed
 
