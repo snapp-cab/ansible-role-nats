@@ -1,1 +1,2 @@
-localhost ansible_connection=local
+[core]
+localhost ansible_connection=local ansible_host=127.0.0.1 nats_client_advertise=127.0.0.1 nats_cluster_routes_address=127.0.0.1
