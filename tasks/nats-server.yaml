@@ -1,9 +1,13 @@
+---
+
 - name: Check if NATS Package is installed
   shell: "set -o pipefail && dpkg-query -W -f='${Version}' nats-server | grep {{ nats_version }}"
+  args:
+   executable: /usr/bin/bash
   register: is_installed
-  check_mode: no
-  failed_when: no
-  changed_when: no
+  check_mode: false
+  failed_when: false
+  changed_when: false
 
 - name: Install NATS package from the GitHub.
   apt:
@@ -16,7 +20,7 @@
     src: nats-server.service.j2
     dest: /etc/systemd/system/nats-server.service
     mode: 0644
-    backup: yes
+    backup: true
   register: nats_server_service_template
 
 - name: Reload systemd after adding NATS service.
@@ -37,7 +41,7 @@
     src: nats-server.conf.j2
     dest: /etc/nats-server.conf
     mode: 0644
-    backup: yes
+    backup: true
   register: nats_server_conf_template
 
 - name: Restart NATS service when its configuration changed
