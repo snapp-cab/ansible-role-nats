@@ -6,7 +6,7 @@
 - name: Install NATS Prometheus exporter package from the GitHub.
   apt:
     state: present
-    deb: >
+    deb: >-
       "https://github.com/nats-io/prometheus-nats-exporter/releases/download/
       v{{ nats_prometheus_exporter_version }}/
       prometheus-nats-exporter-
@@ -31,7 +31,7 @@
 
 - name: Reload systemd after adding NATS exporter service.
   when: nats_exporter_service_template.changed
-  notfy:
+  notify:
     - reload daemon nats-exporter
 
 - name: Ensure NATS exporter service is started and enabled on boot.
