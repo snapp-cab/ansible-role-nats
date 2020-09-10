@@ -27,10 +27,6 @@
     dest: /etc/systemd/system/nats-exporter.service
     mode: 0644
     backup: true
-  register: nats_exporter_service_template
-
-- name: Reload systemd after adding NATS exporter service.
-  when: nats_exporter_service_template.changed
   notify:
     - reload daemon nats-exporter
 

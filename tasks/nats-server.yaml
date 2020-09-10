@@ -17,10 +17,6 @@
     dest: /etc/systemd/system/nats-server.service
     mode: 0644
     backup: true
-  register: nats_server_service_template
-
-- name: Reload systemd after adding NATS service.
-  when: nats_server_service_template.changed
   notify:
     - reload daemon nats-server
 
@@ -36,9 +32,5 @@
     dest: /etc/nats-server.conf
     mode: 0644
     backup: true
-  register: nats_server_conf_template
-
-- name: Restart NATS service when its configuration changed
-  when: nats_server_conf_template.changed
   notify:
     - restart nats-server
