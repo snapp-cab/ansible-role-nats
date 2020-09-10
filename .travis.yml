@@ -25,7 +25,7 @@ script:
   # Install NATS and start its service
   - ansible-playbook tests/test.yaml -i tests/inventory --become
   # NATS server version
-  - nats-server -v
+  - /usr/local/bin/nats-server -v
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
