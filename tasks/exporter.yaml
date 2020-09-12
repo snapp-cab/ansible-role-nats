@@ -14,7 +14,7 @@
 
 - name: Create the NATS Prometheus exporter user
   user:
-    name: "nats-exporter"
+    name: nats-exporter
     comment: "NATS Prometheus exporter user (Ansible Managed)"
     createhome: "no"
     shell: "/usr/sbin/nologin"
