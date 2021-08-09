@@ -1,4 +1,4 @@
-nats_version: "2.1.6"
+nats_version: "2.3.4"
 nats_host_group: "core"
 
 nats_gateway_host_groups: []
