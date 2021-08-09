@@ -62,8 +62,8 @@ gateway {
 }
 
 {% if nats_leaf_node_enabled %}
-leafnode {
-  {% if nats_leaf_node_listen %}
+leafnodes {
+  {% if nats_leaf_node_listen_enabled %}
   port: 7422
   {% endif %}
 
