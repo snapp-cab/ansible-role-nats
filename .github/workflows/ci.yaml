@@ -1,0 +1,25 @@
+---
+name: ci
+on:
+  - push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: install ansible
+        run: |
+          python -m pip install --upgrade ansible ansible-lint
+      - name: create ansible.cfg with correct roles_path
+        run: printf '[defaults]\nroles_path=../' > ansible.cfg
+      - name: ansible-lint
+        run: ansible-lint .
+      - run: ansible-playbook tests/test.yaml -i tests/inventory --syntax-check
+        name: basic role syntax check
+      - run: ansible-playbook tests/test.yaml -i tests/inventory --become
+        name: install NATS and start its service
+      - run: /usr/local/bin/nats-server -v
+        name: nats server version
