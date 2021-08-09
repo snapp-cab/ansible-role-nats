@@ -1,3 +1,7 @@
+---
+natscli_enabled: "true"
+natscli_version: "0.0.25"
+
 nats_version: "2.3.4"
 nats_host_group: "core"
 
@@ -10,3 +14,5 @@ nats_exporter_enabled: "true"
 nats_prometheus_exporter_version: "0.6.2"
 
 nats_leaf_node_enabled: false
+nats_leaf_node_listen_enabled: false
+nats_leaf_node_remotes: []
