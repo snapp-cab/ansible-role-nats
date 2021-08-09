@@ -2,3 +2,6 @@
 
 - include_tasks: exporter.yaml
   when: nats_exporter_enabled == 'true'
+
+- include_tasks: natscli.yaml
+  when: natscli_enabled == 'true'

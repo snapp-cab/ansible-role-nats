@@ -1,0 +1,11 @@
+---
+- name: Gather the package facts
+  package_facts:
+    manager: apt
+
+- name: Install NATS CLI package from the GitHub.
+  apt:
+    state: present
+    deb: "https://github.com/nats-io/natscli/releases/download/\
+      {{ natscli_version }}/nats-{{ natscli_version }}-amd64.deb"
+  when: "'nats' not in ansible_facts.packages"
