@@ -1,13 +1,13 @@
 # NATS Ansible Role
 
-[![Travis (.org)](https://img.shields.io/travis/snapp-cab/ansible-role-nats?logo=travis&style=flat-square)](https://travis-ci.org/github/snapp-cab/ansible-role-nats)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/snapp-cab/ansible-role-nats/ci?label=ci&logo=github&style=flat-square)
 
 NATS.io is a simple, secure, and high-performance open source messaging system for cloud-native applications, IoT messaging, and microservices architectures.
 This ansible role installs it and then provide its configuration.
 
 ## Installation
 
-``` yaml
+```yaml
 # requirments.yaml
 - src: git@github.com:snapp-cab/ansible-role-nats.git
   scm: git
@@ -17,7 +17,7 @@ This ansible role installs it and then provide its configuration.
 
 ## Role Variables
 
-``` yaml
+```yaml
 nats_version: "2.1.6"
 nats_host_group: "core"
 
@@ -31,7 +31,7 @@ Please note that this ansible provides a cluster installation of NATS so you mus
 
 ## Example Playbook
 
-``` yaml
+```yaml
 - hosts: some_servers
   vars:
     nats_version: "2.1.6"
