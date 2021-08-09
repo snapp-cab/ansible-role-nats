@@ -8,3 +8,5 @@ nats_cluster_routes_address: ""
 
 nats_exporter_enabled: "true"
 nats_prometheus_exporter_version: "0.6.2"
+
+nats_leaf_node_enabled: false

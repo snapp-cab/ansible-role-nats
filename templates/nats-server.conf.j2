@@ -60,3 +60,19 @@ gateway {
   {% endfor %}
   ]
 }
+
+{% if nats_leaf_node_enabled %}
+leafnode {
+  {% if nats_leaf_node_listen %}
+  port: 7422
+  {% endif %}
+
+  {% if nats_leaf_node_remotes | length > 0 %}
+  remotes: [
+    {% for remote in nats_leaf_node_remotes %}
+    { url: {{ remote.url }} },
+    {% endfor %}
+  ]
+  {% endif %}
+}
+{% endif %}
