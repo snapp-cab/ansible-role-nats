@@ -1,14 +1,9 @@
 ---
-- name: Gather the package facts
-  package_facts:
-    manager: apt
-
 - name: Install NATS package from the GitHub.
   apt:
     state: present
     deb: "https://github.com/nats-io/nats-server/releases/download/\
       v{{ nats_version }}/nats-server-v{{ nats_version }}-amd64.deb"
-  when: "'nats-server' not in ansible_facts.packages"
 
 - name: Ensure NATS service file is available.
   template:
