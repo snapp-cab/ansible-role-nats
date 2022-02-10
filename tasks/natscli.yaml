@@ -3,4 +3,4 @@
   apt:
     state: present
     deb: "https://github.com/nats-io/natscli/releases/download/\
-      {{ natscli_version }}/nats-{{ natscli_version }}-amd64.deb"
+      v{{ natscli_version }}/nats-{{ natscli_version }}-amd64.deb"
