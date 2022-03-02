@@ -9,7 +9,7 @@ This ansible role installs it and then provide its configuration.
 
 ```yaml
 # requirments.yaml
-- src: git@github.com:snapp-cab/ansible-role-nats.git
+- src: git@github.com:snapp-incubator/ansible-role-nats.git
   scm: git
   version: master
   name: nats
