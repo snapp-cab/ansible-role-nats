@@ -1,22 +1,22 @@
 ---
-- name: restart nats-server
-  service:
+- name: Restart nats-server
+  ansible.builtin.service:
     name: nats-server
     state: restarted
 
-- name: reload nats-server
-  service:
+- name: Reload nats-server
+  ansible.builtin.service:
     name: nats-server
     state: reloaded
 
-- name: reload daemon nats-server
-  systemd:
+- name: Reload daemon nats-server
+  ansible.builtin.systemd:
     state: stopped
     daemon_reload: true
     name: nats-server
 
-- name: reload daemon nats-exporter
-  systemd:
+- name: Reload daemon nats-exporter
+  ansible.builtin.systemd:
     state: stopped
     daemon_reload: true
     name: nats-exporter

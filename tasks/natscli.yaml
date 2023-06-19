@@ -1,6 +1,6 @@
 ---
 - name: Install NATS CLI package from the GitHub.
-  apt:
+  ansible.builtin.apt:
     state: present
     deb: "https://github.com/nats-io/natscli/releases/download/\
       v{{ natscli_version }}/nats-{{ natscli_version }}-amd64.deb"

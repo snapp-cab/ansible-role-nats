@@ -1,30 +1,30 @@
 ---
 - name: Install NATS package from the GitHub.
-  apt:
+  ansible.builtin.apt:
     state: present
     deb: "https://github.com/nats-io/nats-server/releases/download/\
       v{{ nats_version }}/nats-server-v{{ nats_version }}-amd64.deb"
 
 - name: Ensure NATS service file is available.
-  template:
+  ansible.builtin.template:
     src: nats-server.service.j2
     dest: /etc/systemd/system/nats-server.service
-    mode: 0644
+    mode: "0644"
     backup: true
   notify:
     - reload daemon nats-server
 
 - name: Ensure NATS service is started and enabled on boot.
-  service:
+  ansible.builtin.service:
     name: nats-server
     state: started
     enabled: true
 
 - name: Create or update NATS configuration file (/etc/nats-server.conf)
-  template:
+  ansible.builtin.template:
     src: nats-server.conf.j2
     dest: /etc/nats-server.conf
-    mode: 0644
+    mode: "0644"
     backup: true
   notify:
     - restart nats-server

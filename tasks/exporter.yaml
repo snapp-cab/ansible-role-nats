@@ -1,6 +1,6 @@
 ---
 - name: Install NATS Prometheus exporter package from the GitHub.
-  apt:
+  ansible.builtin.apt:
     state: present
     deb: "https://github.com/nats-io/prometheus-nats-exporter/releases/download/\
       v{{ nats_prometheus_exporter_version }}/\
@@ -8,7 +8,7 @@
       v{{ nats_prometheus_exporter_version }}-amd64.deb"
 
 - name: Create the NATS Prometheus exporter user
-  user:
+  ansible.builtin.user:
     name: nats-exporter
     comment: "NATS Prometheus exporter user (Ansible Managed)"
     createhome: "no"
@@ -16,16 +16,16 @@
     system: "yes"
 
 - name: Ensure NATS exporter service file is available.
-  template:
+  ansible.builtin.template:
     src: nats-exporter.service.j2
     dest: /etc/systemd/system/nats-exporter.service
-    mode: 0644
+    mode: "0644"
     backup: true
   notify:
     - reload daemon nats-exporter
 
 - name: Ensure NATS exporter service is started and enabled on boot.
-  service:
+  ansible.builtin.service:
     name: nats-exporter
     state: started
     enabled: true
