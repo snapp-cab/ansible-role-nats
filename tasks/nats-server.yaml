@@ -12,7 +12,7 @@
     mode: "0644"
     backup: true
   notify:
-    - reload daemon nats-server
+    - Reload daemon nats-server
 
 - name: Ensure NATS service is started and enabled on boot.
   ansible.builtin.service:
@@ -27,4 +27,4 @@
     mode: "0644"
     backup: true
   notify:
-    - restart nats-server
+    - Restart nats-server
