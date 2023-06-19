@@ -22,7 +22,7 @@
     mode: "0644"
     backup: true
   notify:
-    - reload daemon nats-exporter
+    - Reload daemon nats-exporter
 
 - name: Ensure NATS exporter service is started and enabled on boot.
   ansible.builtin.service:
