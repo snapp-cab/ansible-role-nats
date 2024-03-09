@@ -1,6 +1,6 @@
 # NATS Ansible Role
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/snapp-cab/ansible-role-nats/ci?label=ci&logo=github&style=flat-square)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/snapp-cab/ansible-role-nats/ci.yaml?style=for-the-badge&logo=github)
 
 NATS.io is a simple, secure, and high-performance open source messaging system for cloud-native applications, IoT messaging, and microservices architectures.
 This Ansible role installs it and then provide its configuration.
