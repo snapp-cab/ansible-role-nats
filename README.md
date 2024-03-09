@@ -1,9 +1,9 @@
 # NATS Ansible Role
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/snapp-incubator/ansible-role-nats/ci?label=ci&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/snapp-cab/ansible-role-nats/ci?label=ci&logo=github&style=flat-square)
 
 NATS.io is a simple, secure, and high-performance open source messaging system for cloud-native applications, IoT messaging, and microservices architectures.
-This ansible role installs it and then provide its configuration.
+This Ansible role installs it and then provide its configuration.
 
 ## Installation
 
@@ -27,7 +27,7 @@ nats_exporter_enabled: "true"
 nats_prometheus_exporter_version: "0.6.2"
 ```
 
-Please note that this ansible provides a cluster installation of NATS so you must group your hosts into the cluster and `nats_host_group` specifies the cluster.
+Please note that this Ansible provides a cluster installation of NATS, so you must group your hosts into the cluster and `nats_host_group` specifies the cluster.
 
 ## Example Playbook
 
